@@ -11,7 +11,7 @@ print ( minus (2, 1))
 
 def multiply ( a, b ):
     return a * b
-print ( multiply (237, 475))
+print ( multiply (2, 1))
 
 
 def division ( a, b ):
@@ -23,13 +23,16 @@ cmd = input( "a op b>>")
 cmds = cmd.split(' ')
 print(cmds[0], cmds[1], cmds[2])
 
+a = int(cmds[0])
+b = int(cmds[2])
 
-if cmds == '+':
-    print ( plus (int.cmds[0], int.cmds[2])) 
-elif cmds == '-':
-    print ( minus (int.cmds[0], int.cmds[2])) 
-elif cmds == '*':
-    print ( multiply (int.cmds[0], int.cmds[2])) 
-elif cmds == '/':
-    print ( division (int.cmds[0], int.cmds[2])) 
+if cmds[1] == '+':
+    print ( plus(a, b)) 
+elif cmds[1] == '-':
+    print ( minus(a, b)) 
+elif cmds[1] == '*':
+    print ( multiply(a, b)) 
+elif cmds[1] == '/':
+    print ( division(a, b)) 
+    
         
