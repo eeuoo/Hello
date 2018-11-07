@@ -10,3 +10,4 @@ elif score >= 60:
     print('d')
 else:
     print('퇴학')
+
