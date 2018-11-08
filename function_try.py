@@ -1,3 +1,17 @@
+def plus( a, b ):
+        return a + b
+
+def minus ( a, b ):
+        return a - b
+
+def multiply ( a, b ):
+        return a * b
+
+def division ( a, b ):
+        if b == 0:
+             return a
+        return a / b
+
 Q = 0
 
 while (Q >= 0):
@@ -7,20 +21,6 @@ while (Q >= 0):
     
     if Q == 0:
         break
-
-    def plus(a, b):
-        return a + b
-
-    def minus (a, b):
-        return a - b
-
-    def multiply ( a, b ):
-        return a * b
-
-    def division ( a, b ):
-        if b == 0:
-             return a
-        return a / b
         
     cmds = cmd.split(' ')
 
