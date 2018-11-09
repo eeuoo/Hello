@@ -22,23 +22,41 @@ class Parallelogram(Quadrangle):
         self.area = self.area * area
 
 
-box = Quadrangle(2)
-box2 = Rectangle(3)
-box3 = Parallelogram(1)
-
-box.unit(22)
-box2.unit(20)
-box3.unit(24)
-
-print (box.area, box2.area, box3.area)
-
 cmd = input("사각형의 종류는? ->")
 
-if cmd == 사각형:
-    input("밑변과 높이 입력 ->")
+if cmd == "사각형":
+    higosa = input("밑변과 높이 입력 ->")
+    hirosas = hirosa.split(',')
+    
+    a = int(hirosas[0])
+    b = int(hirosas[1])
 
-elif cmd == 직사각형:
-    input("가로와 세로 입력 ->")
+    box1 = Quadrangle(a)
+    box1.unit(b)
 
-elif cmd == 평행사변형:
-    input("밑변과 높이 입력 ->")
+    print (box1.area)
+
+elif cmd == "직사각형":
+    hirosa = input("가로와 세로 입력 ->")
+    hirosas = hirosa.split(',')
+    
+    a = int(hirosas[0])
+    b = int(hirosas[1])
+
+    box2 = Rectangle(a)
+    box2.unit(b)
+
+    print (box2.area)
+
+elif cmd == "평행사변형":
+    hirosa = input("밑변과 높이 입력 ->")
+    hirosas = hirosa.split(',')
+    
+    a = int(hirosas[0])
+    b = int(hirosas[1])
+
+    box3 = Parallelogram(a)
+    box3.unit(b)
+    
+    print (box3.area)
+
