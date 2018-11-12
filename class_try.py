@@ -25,7 +25,7 @@ class Parallelogram(Quadrangle):
 cmd = input("사각형의 종류는? ->")
 
 if cmd == "사각형":
-    higosa = input("밑변과 높이 입력 ->")
+    hirosa = input("밑변과 높이 입력 ->")
     hirosas = hirosa.split(',')
     
     a = int(hirosas[0])
