@@ -34,7 +34,7 @@ class 직사각형(사각형):
         
 class 평행사변형(사각형): 
     name = "평행사변형" 
-    msg = "밑변와 높이는?? (usage: 밑변, 높이)" 
+    msg = "밑변과 높이는?? (usage: 밑변, 높이)" 
   
 class 정사각형(사각형): 
     name = "평행사변형" 
@@ -44,10 +44,10 @@ class 정사각형(사각형):
 all_rects = [사각형(), 직사각형(), 평행사변형(), 정사각형()] 
 
 first_msg = "사각형의 종류는?\n"
-for i, r in enumerate(all_rects):
+for i, k in enumerate(all_rects):
     if i == 0:
         continue
-    first_msg += "{:d}) {}\n".format(i, r.name)
+    first_msg += "{:d}) {}\n".format(i, k.name)
 
 first_msg += "(quit:q) >>"
 
