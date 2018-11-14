@@ -18,6 +18,6 @@ else:
 
 print("commit ...", msg)
 os.system("git add --all")
-os.system("git commit -am {}".format(msg))
+os.system('git commit -am "{}"'.format(msg))
 os.system("git push")
 
