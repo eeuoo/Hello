@@ -1,6 +1,7 @@
 import sys, os 
 import datetime
 now = datetime.datetime.now()
+
 sa = sys.argv #0:실행파일 1:메세지 부분
 
 default_message = "new {}".format(now.strftime('%Y-%m-%d'))
@@ -12,11 +13,9 @@ if has_msg:
 
 
 if has_msg == False:
-    input_msg = input("디폴트 메시지라도 괜찮습니까?(yes: Enter or input massage")
+    input_msg = input("디폴트 메시지라도 괜찮습니까?(yes: Enter or input massage)")
     if input_msg != '':
         msg = input_msg
-
-
 
 os.system("git add --all")
 os.system("git commit -am {}".format(msg))
