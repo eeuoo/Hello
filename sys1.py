@@ -25,4 +25,5 @@ with open(sa[1],'r', encoding = 'utf8'):
     for line in file:
         print(line)
 
+
         
