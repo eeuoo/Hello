@@ -11,12 +11,12 @@ has_msg = len(sa) >= 2
 if has_msg:
     msg = sa[1]
 
-
-if has_msg == False:
-    input_msg = input("디폴트 메시지라도 괜찮습니까?(yes: Enter or input massage)")
+else:
+    input_msg = input("디폴트 메시지라도 괜찮습니까? (yes: Enter or input massage)")
     if input_msg != '':
         msg = input_msg
 
+print("commit ...", msg)
 os.system("git add --all")
 os.system("git commit -am {}".format(msg))
 os.system("git push")
