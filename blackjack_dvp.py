@@ -30,7 +30,6 @@ class Game:
                 cardsum = 0
                 cardsum += int(cardlist[i][1])
             
-
 class Player(Game):
    
     if cardsum == 21:
@@ -43,9 +42,11 @@ class Player(Game):
 
         hitorstand = input("Hit 하고 싶으면 1, Stand 하고 싶으면 2를 입력하세요.")
         
-        if hitorstand == '1': continue
+        if hitorstand == '1': 
+            continue
 
-        elif hitorstand == '2': break
+        elif hitorstand == '2': 
+            break
     
     playercardsum = print (cardsum)
 
