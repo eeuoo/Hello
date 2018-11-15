@@ -13,8 +13,7 @@ input_msg = input ("디폴트로 진행 enter or 메시지 입력 -->")
 if input_msg == '':
     print(commit_msg)
 
-else:
-    if input_msg != '':
+elif input_msg != '':
         commit_msg = input_msg
 
 print("commit ...", commit_msg)
