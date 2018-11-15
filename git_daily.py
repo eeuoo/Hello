@@ -9,7 +9,7 @@ msg = default_message
 has_msg = len(sa) >= 2
 
 if has_msg:
-    msg = sa[1]
+    sa[1] = msg
 
 else:
     input_msg = input("디폴트 메시지라도 괜찮습니까? (yes: Enter or input massage)")
