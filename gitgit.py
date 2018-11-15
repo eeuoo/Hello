@@ -1,5 +1,4 @@
 import os 
-
 import datetime
 
 now = datetime.datetime.now()
@@ -14,7 +13,7 @@ if input_msg == '':
     print(commit_msg)
 
 elif input_msg != '':
-        commit_msg = input_msg
+    commit_msg = input_msg
 
 print("commit ...", commit_msg)
 os.system("git add --all")
