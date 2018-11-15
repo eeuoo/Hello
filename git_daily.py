@@ -22,3 +22,4 @@ os.system("git add --all")
 os.system('git commit -am "{}"'.format(commit_msg))
 os.system("git push")
 
+
