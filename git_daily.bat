@@ -1,3 +1,3 @@
 cd c:\workspace\hello
 
-python daily_git.py
+python git_daily.py
