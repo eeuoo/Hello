@@ -1,19 +1,19 @@
-import sys, os 
+import os 
 
 import datetime
+
 now = datetime.datetime.now()
 
-sa = sys.argv #0:실행파일 1:메세지 부분
 
 default_message = "new {}".format(now.strftime('%Y-%m-%d'))
 commit_msg = default_message
-has_msg = len(sa) >= 2
 
-if has_msg:
-    commit_msg = sa[1]
+input_msg = input ("디폴트로 진행 1, 메시지 입력 2")
+
+if input_msg == '1':
+    print(commit_msg)
 
 else:
-    input_msg = input("디폴트 메시지라도 괜찮습니까? (yes: Enter or input massage)")
     if input_msg != '':
         commit_msg = input_msg
 
