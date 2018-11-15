@@ -1,4 +1,4 @@
-import os 
+import os , time
 import datetime
 
 now = datetime.datetime.now()
@@ -21,4 +21,4 @@ os.system("git add --all")
 os.system('git commit -am "{}"'.format(commit_msg))
 os.system("git push")
 
-
+time.sleep(5)
