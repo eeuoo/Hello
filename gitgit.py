@@ -8,7 +8,7 @@ now = datetime.datetime.now()
 default_message = "new {}".format(now.strftime('%Y-%m-%d'))
 commit_msg = default_message
 
-input_msg = input ("디폴트로 진행 1, 메시지 입력 2 -->")
+input_msg = input ("디폴트로 진행 1 or 메시지 입력 -->")
 
 if input_msg == '1':
     print(commit_msg)
