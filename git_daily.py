@@ -10,7 +10,7 @@ commit_msg = default_message
 has_msg = len(sa) >= 2
 
 if has_msg:
-    sa[1] = commit_msg
+    commit_msg = sa[1]
 
 else:
     input_msg = input("디폴트 메시지라도 괜찮습니까? (yes: Enter or input massage)")
