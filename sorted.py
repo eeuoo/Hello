@@ -4,8 +4,9 @@ sort_numbers = sorted(numbers)     # cf. reversed(numbers)
 print("sort_numbers=", sort_numbers)
 print("numbers=", numbers)
 
-sort_strs = sorted(strs)
-print("sort_strs=", sort_strs)
+sort_strs = reversed(strs)
+print("sort_strs=", list(sort_strs))
+print("sort_strs=", tuple(sort_strs))
 
 numbers.sort()
 print("asc>>", numbers)
