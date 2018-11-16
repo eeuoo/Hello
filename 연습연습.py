@@ -6,4 +6,4 @@ card = random.choice(deck)
 
 print(card)
 
-
+print("안녕하세요 안녕히가세요")
