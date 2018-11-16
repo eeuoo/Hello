@@ -1,34 +1,25 @@
 import random
-from functools import reduce
 
-class Deck:
-    
-    def randomcard():
-        deck = ['s2','s3','s4','s5','s6','s7','s8','s9','s10','c2','c3','c4','c5','c6','c7','c8','c9','c10','h2','h3','h4','h5','h6','h7','h8','h9','h10','d2','d3','d4','d5','d6','d7','d8','d9','d10']
-        
-        return random.choice(deck)
+deck_m = ['heart', 'spade', 'diamond', 'clover']
+deck_s = ['a',2,3,4,5,6,7,8,9,10,'q','k','j']
 
-class Game:
-     
-    def start_game(self):
-       cardsum = 0 
-       while (cardsum < 21):  
-        if cardsum < 21:  
-            card = Deck.randomcard()
-            
-            cardlist = list.append(card)
+cardlist = []
 
-            print(cardlist)
+while(len(cardlist) <= 2):
+    card = [random.choice(deck_m), random.choice(deck_s)]
+    cardlist.append( card )
 
-            numlist = []
-            numlist.append(int(card[1]))
+    print(cardlist)
 
-            cardsum = reduce(lambda x, y : x + y, numlist) 
+input_msg = input ("hit or stand (hit : 1, stand : 2 -->")
 
-        if cardsum >= 21: 
-            print(cardsum)
-            break   
-          
-game = Game()
-game.start_game()
-        
+if input_msg == '1' :
+    card = [random.choice(deck_m), random.choice(deck_s)]
+    cardlist.append( card )
+    print(cardlist)
+
+elif input_msg == '2':
+    for i in range(cardlist):
+        cardsum = 0
+        cardsum = cardsum + cardlist[i][1]
+        print(cardsum)    
