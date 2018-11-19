@@ -11,3 +11,4 @@ print("product1>>", product)
 product2 = reduce(lambda x, y : x * y, lst)
 print("product2>>", product2)
 
+    

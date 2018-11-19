@@ -8,3 +8,4 @@ def clear():
         os.system('CLS')
     else:  # posix
         os.system('clear')
+    
