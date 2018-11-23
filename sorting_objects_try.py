@@ -2,7 +2,7 @@ from functools import reduce
 from student_class import Student
         
 students = []
-with open ("students.csv","r", encoding = 'utf8') as file:
+with open ("student_try.csv","r", encoding = 'utf8') as file:
     for line in file:
         students.append( Student(line) )
 
