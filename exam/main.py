@@ -45,7 +45,7 @@ with open ("students.csv","r", encoding = 'utf8') as file:
         if i == 0 : continue
         students.append( Student(line) )
 
-
+students.sort(key = lambda stu : stu.grade, reverse = True )
 m = map(lambda stu: stu.make_grade(), students) 
 list(m) 
 
@@ -56,7 +56,7 @@ for i in students:
     print(i)
     data.append(i)
 
-print("\ndata >>>", data)
+# print("\ndata >>>", data)
 
 # import sqlite3
  
