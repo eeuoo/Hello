@@ -20,9 +20,15 @@ class Student:
 
     def make_addr(self):
         self.sp_addr = self.addr.split(' ')
-        self.mk_addr = "{} {}".format(self.sp_addr[1],self.sp_addr[2])
-        return self.mk_addr
+        if len(self.sp_addr) < 5:
+            self.mk_addr = "{} {}".format(self.sp_addr[1],self.sp_addr[2])
+            return self.mk_addr
+            
+        else : 
+            self.mk_addr = "{} {}".format(self.sp_addr[2],self.sp_addr[3])
 
+            return self.mk_addr
+            
     def make_gender(self):
         if self.gender == '여':
             return 'F'

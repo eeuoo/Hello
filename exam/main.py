@@ -20,8 +20,14 @@ class Student:
 
     def make_addr(self):
         self.sp_addr = self.addr.split(' ')
-        self.mk_addr = "{} {}".format(self.sp_addr[1],self.sp_addr[2])
-        return self.mk_addr
+        if len(self.sp_addr) < 5:
+            self.mk_addr = "{} {}".format(self.sp_addr[1],self.sp_addr[2])
+            return self.mk_addr
+            
+        else : 
+            self.mk_addr = "{} {}".format(self.sp_addr[2],self.sp_addr[3])
+
+            return self.mk_addr
 
     def make_gender(self):
         if self.gender == '여':
@@ -34,8 +40,7 @@ class Student:
 
     def __str__(self):
         return "('{}**', '{}', {}, '{}', '{}')".format(self.name[0], self.make_gender(), self.make_age(), self.level, self.make_addr())
-
-
+ 
 
 students = []
 with open ("students.csv","r", encoding = 'utf8') as file:
@@ -44,19 +49,19 @@ with open ("students.csv","r", encoding = 'utf8') as file:
         
         if i == 0 : continue
         students.append( Student(line) )
+        
 
 students.sort(key = lambda stu : stu.grade, reverse = True )
 m = map(lambda stu: stu.make_grade(), students) 
 list(m) 
 
-
+# "('{}**', '{}', {}, '{}', '{}')".format(i.name[0], i.make_gender(), i.make_age(), i.level, i.make_addr())
 data = []
 
 for i in students:
-    print(i)
-    data.append(i)
+    data.append( Student.__str__(i))
 
-# print("\ndata >>>", data)
+print("\ndata >>>", data)
 
 # import sqlite3
  
