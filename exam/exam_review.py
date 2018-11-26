@@ -20,8 +20,13 @@ with open ("students.csv", "r", encoding = 'utf8') as file:
 
 print(params)
 
+
+
 conn = sqlite3.connect("exam.db")
 
+
+# 함수로 묶어서 호출 후 다시 insert 안되게 막음
+ 
 def insert_data():
     with conn:
         cur = conn.cursor()

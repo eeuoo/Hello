@@ -13,7 +13,6 @@ class Student:
         self.addr = addr
     
     def make_grade(self):
-        print(g_level)
         if self.grade == 100: 
             return 'A+' 
         elif self.grade < 50:
@@ -29,9 +28,9 @@ class Student:
         dong = ''
         
         for i in self.sp_addr:
-            if i.find('구') == (len(i) - 1 ):
+            if i.find('구') == (len(i) - 1):
                 gu = i
-            elif i.find('동', 1) == (len(i) - 1 ):
+            elif i.find('동', 1) == (len(i) - 1):
                 dong = i 
         
         return "{} {}".format(gu, dong)
@@ -42,7 +41,7 @@ class Student:
     def make_age(self):
         try:
             iage = (int(self.age) // 10) * 10
-            return "{:d}0대".format(iage)            
+            return "{:d}대".format(iage)            
         except:
             return '알 수 없음'
 
