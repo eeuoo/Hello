@@ -30,8 +30,9 @@ m2 = re.findall("is better than(.*)", the_zen, re.MULTILINE)
 # print(m)
 # print(m2)
 
-m3 = re.findall("(.*) is better than (.*)\.", the_zen, re.MULTILINE)
-print(m3)
+m3 = re.findall("(.*) is.* better than (.*)\.", the_zen, re.MULTILINE)
+
+# print(m3)
 
 for i in m3:
     print( "{} > {}".format(i[0].lower(),i[1]))
