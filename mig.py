@@ -1,4 +1,3 @@
-# coding=utf-8
 import cx_Oracle
 
 connection = cx_Oracle.connect("hr", "hrpw", "localhost:1521/xe")

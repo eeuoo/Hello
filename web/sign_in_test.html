@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SIGN_IN_TEST</title>
+
+    <script>
+        function check_id_pw() {
+
+            var uid = get_id("uid"),
+                upw = get_id("upw") ;
+            
+            var okmsg = document.getElementById("signinok")
+                ,failmsg = document.getElementById("singinfail")
+                ,signinform = document.getElementById("form")
+                ,okmsgadd = document.getElementById("addmsg")
+                ,wmpic = document.getElementById("watermelon") ;
+
+            var msg = uid + "님 반갑습니다!";
+            
+            document.getElementById("addmsg").innerHTML = msg;
+            
+            if (uid === 'a' && upw === '1') {
+                okmsg.style.display = 'block';
+                signinform.style.display = 'none';
+                okmsgadd.style.display = 'block' ;
+                wmpic.style.display = 'block' ;
+            } 
+            else { 
+                failmsg.style.display = 'block';
+            }
+
+            return false;
+        }
+
+        function get_id(id) {
+            return document.getElementById(id).value;
+        }
+        
+    </script>
+
+</head>
+<body>
+    <form id="form" onsubmit="return check_id_pw()" method="post"> 
+    <fieldset>
+    <legend>Personal information:</legend>
+    <h2> SIGN IN </h2>
+    <input type="text" id="uid" name="userid" value="">
+    <input type="password" id="upw" name="userpw" value="">   
+    <button>로그인</button>
+    <input type="reset">
+    <br>
+    <p id="singinfail" style="color:red; display: none;">로그인 실패</p>
+    </fieldset>
+    </form>
+    <br>
+    <p id="signinok" style="color:blue; display: none;">로그인 성공</p>
+   <p id="addmsg" style="color:blue; display: none;"><br></p>
+   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKq-q9emXZ0cSMUPet63YaA1Jyc2DnCw2x9g9yTmlv3hlA_tmk" 
+    id="watermelon" style="display: none ; width: 200px;">
+
+</body>
+</html>

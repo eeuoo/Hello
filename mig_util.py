@@ -8,8 +8,8 @@ def get_oracle_conn():
 def get_mysql_conn(db):
     return pymysql.connect(
         host='localhost',
-        user='dooo',
-        password='dooo!',
+        user='doo',
+        password='11',
         port=3306,
         db=db,
         charset='utf8')
