@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SIGN_IN_TEST</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+<script>
+    $( window ).on( "load", alert('onload!!') );
+    $( document ).ready(function() {
+        console.log( "ready!" );
+        $('#singinfail').hide();
+        $('#uid').val('a');
+        $('#upw').val('1');
+    });
+
+
+    function check_id_pw() {
+
+        var uid = $("#uid").val(),
+            upw = $("#upw").val() ;
+        
+        var okmsg = $("#signinok")
+            ,failmsg = $("#singinfail")
+            ,signinform = $("#form")
+            ,addokmsg = $("#addmsg")
+            ,wmpic = $("#watermelon") ;
+
+        var msg = uid + "님 반갑습니다!";
+        
+        $("#addmsg").innerHTML = msg;
+        
+        if (uid === 'a' && upw === '1') {
+            okmsg.show();
+            signinform.hide();
+            addokmsg.show() ;
+            wmpic.show();
+        } 
+        else { 
+            failmsg.show()
+            signinform.show();
+        }
+
+        return false;
+    }
+</script>
+
+
+</head>
+<body>
+    <form id="form" onsubmit="return check_id_pw()" method="post"> 
+    <fieldset>
+    <legend>Personal information:</legend>
+    <h2> SIGN IN </h2>
+    <input type="text" id="uid" name="userid" value="">
+    <input type="password" id="upw" name="userpw" value="">   
+    <button>로그인</button>
+    <input type="reset">
+    <br>
+    <p id="singinfail" style="color:red; display: none;">로그인 실패</p>
+    </fieldset>
+    </form>
+    <br>
+    <p id="signinok" style="color:blue; display: none;">로그인 성공</p>
+    <p id="addmsg" style="color:blue;"><br></p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKq-q9emXZ0cSMUPet63YaA1Jyc2DnCw2x9g9yTmlv3hlA_tmk" 
+    id="watermelon" style="width: 200px; display:none;">
+
+</body>
+</html>

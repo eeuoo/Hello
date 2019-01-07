@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SIGN_IN_TEST</title>
+
+    <script src="sign_in_test.js"></script>
+
+</head>
+
+<body>
+    <form id="form" onsubmit="return check_id_pw()" method="post"> 
+    <fieldset>
+    <legend>Personal information:</legend>
+    <h2> SIGN IN </h2>
+    <input type="text" id="uid" name="userid" value="">
+    <input type="password" id="upw" name="userpw" value="">   
+    <button>로그인</button>
+    <input type="reset">
+    <br>
+    <p id="singinfail" style="color:red; display: none;">로그인 실패</p>
+    </fieldset>
+    </form>
+    <br>
+    <p id="signinok" style="color:blue; display: none;">로그인 성공</p>
+   <p id="addmsg" style="color:blue; display: none;"><br></p>
+   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKq-q9emXZ0cSMUPet63YaA1Jyc2DnCw2x9g9yTmlv3hlA_tmk" 
+    id="watermelon" style="display: none ; width: 200px;">
+
+</body>
+</html>

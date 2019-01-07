@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Made with Thimble</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        body {
+        text-align:center
+      }
+      input {
+        width:500px;
+        height:30px;
+      }
+      div.in {
+        display: inline;
+      }
+    </style>
+
+    <script>
+        function getid2(e) {
+            var emailaddress = document.getElementById('emailaddress').value;
+            if (!emailaddress) {
+                alert("이름을 입력하세요!!");
+                return;
+            }
+            var msg = emailaddress + "님 반갑습니다!";
+            document.getElementById("getid22").innerHTML = msg;
+        }
+        function showdate() {
+            document.getElementById("mouseover").innerHTML = Date();
+        }
+        function sel() {
+            var sel1 = document.getElementById("sel1"),
+                sel2 = document.getElementById("sel2"),
+                ul1 = document.getElementById('ul1'); 
+            console.log("sel1>>", sel1, sel2, ul1)
+            var idx = Number(sel1.value) - 1;
+            sel2.selectedIndex = idx;
+            var outputText = sel1.options[idx].text;
+            ul1.innerHTML = ul1.innerHTML + '<li>' + outputText  + '</li>'
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Spotify is currently not available<br>in your country.<br></h1>
+    <h3>Be the first to know when we launch.</h3>
+
+    <ul id="ul1">
+        <li>선택된 내용</li>
+    </ul>
+
+    <form>
+        <div style="margin: 20px;">
+            <select id="sel1" onchange="sel()">
+                <option value="1">111</option>
+                <option value="2">222</option>
+                <option value="3">333</option>
+            </select>
+
+            <select id="sel2">
+                <option value="1">100</option>
+                <option value="2">200</option>
+                <option value="3">300</option>
+            </select>
+        </div>
+
+        <div class="in">
+            Email address<br>
+            <input id="emailaddress" type="text" name="emailaddress">
+            <button type="button" onclick="getid2()">Check the ID</button>
+            <p id="getid22">555</p>
+        </div>
+        <br>
+        <button onclick="this.innerHTML=Date()">Time</button>
+        <button id="mouseover" onmouseover=showdate()>date
+        </button>
+        
+
+    </form>
+    <p>
+        <a href="www.facebook.com">Sign up with Facebook</a>
+    </p>
+    <p style="color:red">The emaill address you supplied is invalid, please check to ensure it is correct.
+    </p>
+
+</body>
+
+</html>
