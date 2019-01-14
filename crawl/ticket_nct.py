@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-import ticket_JEKYLL_HYDE as tjk
+import ticket_module as tm
 
 session = requests.session()
 
@@ -27,23 +27,8 @@ soup = BeautifulSoup(res.text, "html.parser")
 seat_info = soup.find('regend').get_text()
 seat_info2 = soup.find('section').get_text()
 
-seat_list = seat_info.split('^')
 
-real_seat_list = []
+tm.split_1(seat_info)
+print("--------------")
+tm.split_2(seat_info2)
 
-for i in seat_list :
-    sl = i.split('@')
-    real_seat_list.append(sl)
-
-#print(real_seat_list)
-
-for j, k in enumerate(real_seat_list):
-    
-    if real_seat_list[j][0] == '' :
-        continue
-    else :
-        aa = real_seat_list[j][4] + ' ' + real_seat_list[j][2] + '원' + " " + real_seat_list[j][3] + '석'
-
-    print(aa)
-
-tjk.split_2(seat_info2)
