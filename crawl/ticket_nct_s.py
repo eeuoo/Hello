@@ -4,7 +4,7 @@ import requests
 
 
 USER = "dlguswn512"
-PASS = "lhzoo4295"
+PASS = ""
 
 browser = webdriver.Chrome('/Users/lhj/chromedriver')
 browser.implicitly_wait(3)

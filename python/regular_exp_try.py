@@ -27,12 +27,12 @@ Namespaces are one honking great idea -- let's do more of those! """
 
 m = re.findall("(.*)is better than", the_zen, re.MULTILINE)
 m2 = re.findall("is better than(.*)", the_zen, re.MULTILINE)
-# print(m)
-# print(m2)
+print(m)
+print(m2)
 
 m3 = re.findall("(.*) is.* better than (.*)\.", the_zen, re.MULTILINE)
 
-# print(m3)
+print(m3)
 
 for i in m3:
     print( "{} > {}".format(i[0].lower(),i[1]))

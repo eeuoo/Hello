@@ -8,8 +8,8 @@ driver = webdriver.Chrome(drvPath)
 UserId1 = "dlgus"
 UserId2 = "wn512"
 
-UserPw1 = "lhzoo"
-UserPw2 = "2084"
+UserPw1 = ""
+UserPw2 = ""
 
 driver.get("https://www.naver.com")
 time.sleep(1)

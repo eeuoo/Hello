@@ -49,9 +49,9 @@ def get_list (trs) :
 
         dic[dataSongNo] = tempDic
 
+
 get_list(trs1)
 get_list(trs2)
-
 
 
 
@@ -60,9 +60,7 @@ for j in jsonData['contsLike']:
     x = dic.get(songId)
     if x == None :
         continue
-    print(x)
     x['likeCnt'] = j['SUMMCNT']
-
 
 
 for i in dic.values() :
