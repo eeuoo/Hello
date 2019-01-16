@@ -42,6 +42,9 @@ sleep(1)
 # 좌석 선택 버튼 클릭.
 browser.find_element_by_css_selector("div.fr img").click()
 
+# browser.execute_script('./jquery.js');
+# browser.execute
+
 
 
 seats = browser.find_elements_by_css_selector("ul.hi > li")

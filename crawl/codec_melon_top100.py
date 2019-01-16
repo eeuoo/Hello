@@ -1,3 +1,4 @@
+import csv, codecs
 import requests, json
 from bs4 import BeautifulSoup
 from pprint import pprint 
@@ -31,7 +32,7 @@ def get_list (trs) :
             artistList = []
             for i in artist :
                 artistList.append(i.text)
-            artist = artistList
+            artist = ", ".join(artistList)
         else : artist = artist[0].text
 
         tempDic = {'rank' : int(rank), "CONTSID": dataSongNo, "name": name , "artist" : artist, "likeCnt" : likeCnt}
@@ -65,7 +66,32 @@ for j in jsonData['contsLike']:
     x['likeCnt'] = j['SUMMCNT']
 
 
+# dic = sorted(dic.items(), key=lambda d : d[1]['rank'])
+
+#pprint(dic)
+
+
+sortLike = sorted(dic.items(), key=lambda d : d[1]['likeCnt'])
+
+minLike = sortLike[0][1]['likeCnt']
+
 dic = sorted(dic.items(), key=lambda d : d[1]['rank'])
 
-pprint(dic)
 
+with codecs.open('./crawl/melon_top100.csv', 'w', encoding='utf-8') as ff:
+    writer = csv.writer(ff, delimiter=',', quotechar='"')
+    
+    likecnt_total = 0
+    diff_total = 0
+
+    
+    writer.writerow(['랭킹', '제목', '가수명', '좋아요수', ''])
+
+    for song in dic:
+        
+        writer.writerow([ song[1]['rank'], song[1]['name'], song[1]['artist'], song[1]['likeCnt'], (song[1]['likeCnt']- minLike) ])
+
+        likecnt_total += song[1]['likeCnt']
+        diff_total += (song[1]['likeCnt']- minLike)
+
+    writer.writerow(['계', '', '', likecnt_total, diff_total])

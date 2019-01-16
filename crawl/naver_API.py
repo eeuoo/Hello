@@ -26,7 +26,5 @@ print(json.dumps(jsonData, ensure_ascii=False, indent=2))
 
 for item in jsonData["items"]:
 
-    m3 = re.findall("(.*) is.* better than (.*)\.", item['title'] )
-
     print(item['title'] ,item['bloggerlink'], item['bloggername'], item['postdate'])
 
