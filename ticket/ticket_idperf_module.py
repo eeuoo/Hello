@@ -2,9 +2,10 @@
 
 import re
 
-
-def get_idperf (perfUrl) :
-
-    pIdPerf = re.findall("IdPerf=(.*)", perfUrl)[0]
-
+def get_idperf (URL) :
+    try : 
+        pIdPerf = re.findall("IdPerf=(.*)&", URL)[0]
+    except IndexError:
+        pIdPerf = re.findall("IdPerf=(.*)", URL)[0]
+    
     return pIdPerf
