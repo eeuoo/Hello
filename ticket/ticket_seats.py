@@ -4,6 +4,17 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import ticket_module as tm
+import page2 
+
+
+def get_idperf (URL) :
+    try : 
+        pIdPerf = re.findall("IdPerf=(.*)&", URL)[0]
+    except IndexError:
+        pIdPerf = re.findall("IdPerf=(.*)", URL)[0]
+    
+    return pIdPerf
+
 
 session = requests.session()
 
@@ -39,14 +50,6 @@ res = session.get(perfUrl)
 res.raise_for_status()
 
 
-def get_idperf (URL) :
-    try : 
-        pIdPerf = re.findall("IdPerf=(.*)&", URL)[0]
-    except IndexError:
-        pIdPerf = re.findall("IdPerf=(.*)", URL)[0]
-    
-    return pIdPerf
-
 
 #접근할 페이지 2
 
@@ -80,6 +83,8 @@ for i in pDay :
    pDayList.append(i.attrs['value'].replace('-',''))
 
 
+
+
 #접근할 페이지 3
 
 
@@ -106,7 +111,6 @@ for day in pDayList:
 
 
 
-
     #idHall과 idTime 추출
     soup3 = BeautifulSoup(res3.text, "html.parser")
 
@@ -114,6 +118,8 @@ for day in pDayList:
     idTime = soup3.select_one('ul#ulTimeData >li').attrs['value']
 
         
+
+
     #접근할 페이지 4
 
     url = "http://ticket.yes24.com/OSIF/Book.asmx/GetHallMapRemainFN"

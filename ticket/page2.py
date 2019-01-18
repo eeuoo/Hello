@@ -4,25 +4,32 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
+
 url = "http://ticket.yes24.com/Pages/Perf/Sale/PerfSaleProcess.aspx?IdPerf=32098"
 
 # pIdPerf = re.findall("IdPerf=(.*)", url)[0]
 
 def get_idperf (perfUrl) :
-
-    pIdPerf = re.findall("IdPerf=(.*)&", perfUrl)[0]
-
+    try : 
+        pIdPerf = re.findall("IdPerf=(.*)&", perfUrl)[0]
+    except IndexError:
+        pIdPerf = re.findall("IdPerf=(.*)", perfUrl)[0]
+    
     return pIdPerf
 
 
-def get_pDay(perfUrl):
-
-    session = requests.session()
+def get_pDay(perfUrl, session):
+    
         
     page2_headers = { 'Referer': perfUrl ,
     'Host': 'ticket.yes24.com',
     'Origin': 'http://ticket.yes24.com',
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
+
+
+    res = session.get(perfUrl)
+    res.raise_for_status()
+
 
     # 공연 url 받아서 공연번호(Idperf) 추출
     
@@ -55,3 +62,5 @@ def get_pDay(perfUrl):
 
         
     return pDayList
+
+
