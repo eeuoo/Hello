@@ -64,3 +64,15 @@ print((min(sum_dic.items(), key=lambda x : x[1])[0]))
 # 방법 4
 vk = dict((v,k) for k,v in sum_dic.items())
 print(vk[min_s])
+
+# 방법 5
+mk = ''
+mv = 100000
+for k, v in sum_dic.items():
+    if v < mv :
+        mk = k
+        mv = v
+
+print(mk)
+
+

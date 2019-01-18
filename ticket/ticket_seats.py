@@ -31,7 +31,7 @@ login_info = {
 res = session.post(loginUrl, data=login_info, headers=headers)
 res.raise_for_status()
  
-perfUrl = 'http://ticket.yes24.com/Pages/Perf/Detail/DetailSpecial.aspx?IdPerf=32059'
+perfUrl = 'http://ticket.yes24.com/Pages/Perf/Detail/DetailSpecial.aspx?IdPerf=32149'
 
 
 #접근할 페이지 1
