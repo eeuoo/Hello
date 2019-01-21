@@ -16,7 +16,7 @@ def get_idperf (URL) :
     return pIdPerf
 
 
-perfUrl = 'http://ticket.yes24.com/Pages/Perf/Detail/DetailSpecial.aspx?IdPerf=32149'
+perfUrl = 'http://ticket.yes24.com/Pages/Perf/Detail/Detail.aspx?IdPerf=31656'
 
 session = requests.session()
 
@@ -70,5 +70,5 @@ for day in pDayList:
 
 
 
-
+# ToDo : 콘서트 / 뮤지컬 / 공연 잔여좌석수 나타내는 패턴 만들기
 
