@@ -14,7 +14,7 @@ def get_youtube(q):
         part='snippet',
         q=q,
         type='video',
-        maxResults = 2
+        maxResults = 50
     )
 
     i = 0
@@ -36,6 +36,7 @@ def get_youtube(q):
 
         i += 1
 
+        time.sleep(3)
 
 
 def insert_mongo(data):
@@ -59,17 +60,27 @@ def top10():
     for i in lst:
         pprint(i)
  
-def viewCount_int(youtubes):
-    for i, y in enumerate(youtubes):
-      print(y) 
-        
 
+def viewCount_int(youtubes):
+  
+    for yous in youtubes:
+        for vc in yous:
+            for i, s in vc['statistics'].items():
+                vc['statistics'][i] = int(s)
+                
+            yield vc
+
+         
 if __name__ == "__main__":  
 
     try:
         youtubes = get_youtube('파이썬')
 
-        viewCount_int(youtubes)
+        one = viewCount_int(youtubes)
+
+        insert_mongo(one)
+
+        top10()
 
     except HttpError as err:
     # If the error is a rate limit or connection error,
