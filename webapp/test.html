@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test HBS</title>
+    <script src="./handlebars-v4.0.12.js"></script>
+
+</head>
+
+<body>
+<script id="entry-template" type="text/x-handlebars-template">
+  <div class="entry">
+    <h1>{{title}}</h1>
+    <div class="body">
+      {{body}}
+    </div>
+  </div>
+</script>
+
+<div id="result"></div>
+
+
+<hr>
+<h1>Comments</h1>
+<div id="result_comments"></div>
+
+<script id="comments-template" type="text/x-handlebars-template">
+  <div class="comments">
+    <ul>
+        {{#each comments}}
+            <li>
+                {{id}}. {{title}} - {{{body}}}
+                {{#if author}}
+                    by {{fullname author}}
+                {{/if}}
+                {{#unless isGuest}}
+                    <button>~삭제~</button>
+                {{/unless}}
+            </li>
+        {{/each}}
+    </ul>
+  </div>
+</script>
+
+
+<script>
+   Handlebars.registerHelper('fullname', function (a) {
+        return a.firstname + ' ' + a.lastname;
+    });
+
+    Handlebars.registerHelper('id_title', function () {
+        id = Handlebars.escapeExpression(this.id);
+        title = Handlebars.escapeExpression(this.title);
+        h = '<small>' + id + '</small> <strong>' + title + '</strong>'
+        return new Handlebars.SafeString(h);
+    });
+     
+
+
+    var context = {
+        title : 'Title',
+        body : 'body!!'
+    };
+
+    hbs("entry-template", context, 'result');
+
+    var data = {
+        comments : [
+            {id : 1, title : 'aaa', body: '내용1',
+                author : {firstname: '길동', lastname:'홍'},
+                isGuest: true
+            },
+            {id : 2, title : 'bbb', body: '내용2',
+                author : {firstname: '동길', lastname:'박'}
+            },
+            {id : 3, title : 'ccc', body: '<em>내용3</em>'}
+        ]
+    }
+
+  
+    hbs('comments-template', data, 'result_comments');
+
+    
+
+    function hbs(sourceId, data, resultId){
+        var source   = document.getElementById(sourceId).innerHTML;
+        var template = Handlebars.compile(source);
+        var html = template(data);
+        document.getElementById(resultId).innerHTML = html;
+        
+    }
+
+</script>
+    
+</body>
+</html>
