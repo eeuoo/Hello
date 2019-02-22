@@ -22,7 +22,7 @@ a = [0,1,4,5,9]
 def map():
     for i in data:
         (year, temp) = i[15:19],i[-18:-12]
-        i = (year, temp)
+
         if int(temp[-1]) in a :
             t = temp[:-1]
             i = (year, int(t))
