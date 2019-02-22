@@ -15,6 +15,8 @@ if not client.check_table(DATABASE, TABLE):
         {'name': 'albumid', 'type': 'string', 'description': 'album id'},
         ]
     )
-ttt = [ {'songno': '222', 'title': '홍2', 'albumid': '121212121'} ]
+ttt = [ {'songno': '111', 'title': '홍1', 'albumid': '111111111', 'record': {'sub1':'abc1'}},
+        {'songno': '222', 'title': '홍2', 'albumid': '121212121', 'record': {'sub1':'abc2'}},
+ ]
 pushResult = client.push_rows(DATABASE, TABLE, ttt, insert_id_key='songno')
 print("Pushed Result is", pushResult)
