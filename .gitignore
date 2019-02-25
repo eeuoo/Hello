@@ -1,3 +1,7 @@
-./bigdata/bigquery.json
-./bigdata/bigquery1.json
+bigdata/bigquery.json
+bigdata/bigquery1.json
+crawl/dd.py
+crawl/youtube_api.py
+
+
 
