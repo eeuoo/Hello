@@ -2,11 +2,10 @@ from apiclient.discovery import build
 from pymongo import MongoClient, DESCENDING
 from pprint import pprint
 from googleapiclient.errors import HttpError
-import time
+import time, os
 
 
-API_KEY = "AIzaSyA_ww16Zva6Htex1KXy29rw3Rpx7uloCKk"  #본인의 API키
-
+API_KEY = os.getenv("API_KEY")  #본인의 API키
 
 def main():
 
