@@ -32,7 +32,7 @@ if not clf:
     clf = svm.SVC(gamma='auto')
     print(len(train['labels']))
     clf.fit(train['images'], train['labels'])
-    # joblib.dump(clf, pklFile)
+    joblib.dump(clf, pklFile)
 
 # test -------------------------
 pred = clf.predict(test['images'])
@@ -40,6 +40,5 @@ pred = clf.predict(test['images'])
 score = metrics.accuracy_score(test['labels'], pred)
 print("\n\nscore=", score)
 
-print("-----------------------------------------")
 report = metrics.classification_report(test['labels'], pred)
 print(report)
