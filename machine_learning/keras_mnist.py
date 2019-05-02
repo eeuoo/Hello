@@ -10,8 +10,10 @@ from keras.utils import np_utils
 X_train = X_train.reshape(60000, 28 * 28).astype('float32')
 X_test = X_test.reshape(10000, 28 * 28).astype('float32')
 
-X_train = X_train / 255
+# 소수로 만들기 위해 255로 나눔 ( 정교화 )
+X_train = X_train / 255    
 X_test = X_test / 255
+print('X_train : ', X_train, 'X_test : ', X_test)
 
 # label 범주화
 y_train = np_utils.to_categorical(y_train, 10)
