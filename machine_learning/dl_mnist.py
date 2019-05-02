@@ -101,7 +101,7 @@ def set_feed(images, labels, prob):
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
     test_fd = set_feed(mnist.test.images, mnist.test.labels, 1) 
-    for step in range(100):
+    for step in range(10000):
         batch = mnist.train.next_batch(50)
         fd = set_feed(batch[0], batch[1], 0.5)  # test: 0.5
         _, loss = sess.run([train_step, cross_entropy], feed_dict=fd)
