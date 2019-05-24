@@ -11,7 +11,7 @@ def calc_bmi(h, w) :
 
 # 출력 파일 준비하기
 fp = open("bmi.csv", "w", encoding="utf-8")
-fp.write("height, weight, label\r\n")
+fp.write("height,weight,label\r\n")
 
 # 무작위로 데이터 생성하기
 cnt = {"thin" : 0, "normal" : 0, "fat" : 0}
