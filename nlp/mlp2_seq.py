@@ -51,4 +51,38 @@ def count_freq(limit = 0) :
     X = []
     Y = []
     max_words = word_dic['_MAX']
-    
+    cat_names = []
+    for cat in os.listdir(root_dir) :
+        cat_dir = root_dir + '/' + cat
+        if not os.path.isdir(cat_dir) :
+            continue
+        cat_idx = len(cat_names)
+        files = glob.glob(cat_dir + '/*.wakati')
+        i = 0
+        for path in files :
+            print(path)
+            cnt = count_file_freq(path)
+            X.append(cnt)
+            Y.append(cat_idx)
+            if limit > 0 :
+                if i > limit :
+                    break
+                i += 1
+    return X, Y
+
+# 단어 딕셔너리 만들기
+if os.path.exists(dic_file) :
+    word_dic = json.load( open(dic_file) )
+else :
+    register_dic()
+    json.dump( word_dic, open(dic_file, 'w') )
+
+# 벡터를 파일로 출력하기
+# 텍스트 목적의 소규모 데이터 만들기
+X, Y = count_freq(20)
+json.dump( {'X' : X, 'Y' : Y }, open(data_file_min, 'w') )
+
+# 전체 데이터를 기반으로 데이터 만들기
+X, Y = count_freq()
+json.dump( {'X' : X, 'Y' : Y }, open(data_file, 'w') )
+print('OK')
