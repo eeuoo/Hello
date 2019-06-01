@@ -14,13 +14,13 @@ class BayesianFilter :
         results = []
         twitter = Twitter()
 
-    # 단어의 기본형 사용
-    malist = twitter.pos(text, norm = True, stem = True )
-    for word in malist :
-        # 어미/조사/구두점 등은 대상에서 제외
-        if not word[1] in ['Josa', 'Eomi', 'Punctuation'] :
-            results.append(word[0])
-    return results
+        # 단어의 기본형 사용
+        malist = twitter.pos(text, norm = True, stem = True )
+        for word in malist :
+            # 어미/조사/구두점 등은 대상에서 제외
+            if not word[1] in ['Josa', 'Eomi', 'Punctuation'] :
+                results.append(word[0])
+        return results
 
     # 단어와 카테고리의 출현 횟수 세기
     def inc_word(self, word, category) :
