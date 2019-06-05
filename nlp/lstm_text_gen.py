@@ -50,3 +50,58 @@ model.add( Dense(len(chars)) )
 model.add( Activation('softmax') )
 optimizer = RMSprop(lr = 0.01)
 model.compile(loss = 'categorical_crossentropy', optimizer = optimizer)
+
+# 후보를 배열에서 꺼내기
+def sample(preds, temperature = 1.0) :
+    preds = np.asarray(preds).astype('float64')
+    preds = np.log(preds) / temperature
+
+    exp_preds = np.exp(preds)
+
+    preds = exp_preds / np.sum(exp_preds)
+    probas = np.random.multinomial(1, preds, 1)
+    
+    return np.argmax(probas)
+
+# 학습시키고 텍스트 생성하기 반복
+for iteration in range(1, 60) :
+    print()
+    print('-' * 50)
+    print('반복 = ', iteration)
+
+    model.fit(X, y, batch_size = 128, nb_epoch = 1)
+
+    # 임의의 시작 텍스트 선택
+    start_index = random.randint(0, len(text) - maxlen - 1 )
+
+    # 다양한 다양성의 문장 생성
+    for diversity in [0.2, 0.5, 1.0, 1.2] :
+        print()
+        print('----- 다양성 = ', diversity)
+
+        generated = ''
+        sentence = text[start_index : start_index + maxlen]
+        generated += sentence
+
+        print('---- 시드 = "' + sentence + '"')
+
+        sys.stdout.write(generated)
+
+        # 시드를 기반으로 텍스트 자동 생성
+        for i in  range(400) :
+            x = np.zeros( (1, maxlen, len(chars)) )
+            for t, char in enumerate(sentence) :
+                x[0, t, char_indices[char]] = 1.
+            
+            # 다음에 올 문자 예측하기
+            preds = model.predict(x, verbose = 0)[0]
+            next_index = sample(preds, diversity)
+            next_char = indices_char[next_index]
+
+            # 출력하기
+            generated += next_char
+            sentence = sentence[1:] + next_char
+            sys.stdout.write(next_char)
+            sys.stdout.flush()
+        
+        print()
