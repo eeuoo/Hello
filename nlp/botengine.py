@@ -111,3 +111,7 @@ def make_reply(text) :
         if face in dic :
             return make_sentence(face)
     return make_sentence('@')
+
+# 딕셔너리 있다면 읽어 들이기
+if os.path.exists(dict_file) :
+    dic = json.load( open(dict_file, 'r') )
