@@ -77,5 +77,23 @@ def make_sentence(head) :
 
     ret = ''.join(ret)
 
-   
+    # 띄어쓰기    
+    params = urllib.parse.urlencode({
+        '_callback' : "",
+        'q' : ret
+    })
+    
+    # 네이버 맞춤법 검사기
+    data = urllib.request.urlopen('https://m.search.naver.com/p/csearch/dcontent/spellchecker.nhn?' + params)
+    data = data.read().decode('utf-8')[1:-2]
+    data = json.loads(data)
+    data = data['message']['result']['html']
+    data = soup = BeautifulSoup(data, 'html.parser').getText()
 
+    # 리턴
+    return data
+
+def word_choice(sel) :
+    keys = sel.keys()
+    return random.choice( list(keys) )
+    
