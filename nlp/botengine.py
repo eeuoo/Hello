@@ -96,4 +96,18 @@ def make_sentence(head) :
 def word_choice(sel) :
     keys = sel.keys()
     return random.choice( list(keys) )
-    
+
+# 챗복 응답 만들기
+def make_reply(text) :
+    # 단어 학습시키기
+    if not text[-1] in [".", "?"] :
+        text += "."
+    words = twitter.pos(text)
+    register_dic(words)
+
+    # 사전에 단어가 있다면 그것을 기반으로 문장 만들기
+    for word in words :
+        face = word[0]
+        if face in dic :
+            return make_sentence(face)
+    return make_sentence('@')
