@@ -33,6 +33,6 @@ def np2hash(ahash) :
 
 
 # Average Hash 출력하기
-ahash = average_hash('tower.jpg')
+ahash = average_hash('./data/tower.jpg')
 print(ahash)
 print(np2hash(ahash))
