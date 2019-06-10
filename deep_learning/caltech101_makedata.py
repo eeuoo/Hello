@@ -28,7 +28,7 @@ for idx, cat in enumerate(categories) :
 
     for i, f in enumerate(files) :
         img = Image.open(f)
-        img = img.conert('RGB')
+        img = img.convert('RGB')
         img = img.resize( (image_w, image_h) )
         data = np.asarray(img)
         X.append(data)
