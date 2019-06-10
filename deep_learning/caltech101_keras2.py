@@ -17,8 +17,10 @@ for i, v in enumerate(pre) :
     print(v)
 
     # 이미지 출력하기
-    fname = 'image/error/' + str(i) + '_' + categories[pre_ans] + \
+    fname = './data/error/' + str(i) + '_' + categories[pre_ans] + \
         "_ne_" + categories[ans] + ".PNG"
     dat *= 256
     img = Image.fromarray( np.unit8(dat) )
     img.save(fname)
+
+
