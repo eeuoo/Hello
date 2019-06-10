@@ -44,7 +44,7 @@ model.compile(loss = 'binary_crossentropy',
             metrics = ['accuracy'] )
 
 # 모델 훈련
-model.fix(x_train, y_train, batch_size = 32, nb_epoch = 50)
+model.fit(x_train, y_train, batch_size = 32, nb_epoch = 50)
 
 # 모델 평가
 score = model.evaluate(x_test, y_test)
