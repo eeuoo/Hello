@@ -89,4 +89,4 @@ def download_all(keyword, save_dir, maxphoto = 1000) :
 
 if __name__ == '__main__' :
     # 모듈로 사용할 수 있게 설정
-    download_all(' ', './data/gyudon')
+    download_all('牛丼', './data/gyudon')
