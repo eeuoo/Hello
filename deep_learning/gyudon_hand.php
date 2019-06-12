@@ -72,7 +72,7 @@ if ($m == 'mv') { // 분류하기
         $buttons .="[<a href='$api'>$key($cnt)</a>]";
     }
 
-    echo <<< EOS
+    echo <<<EOS
         <html>
         <head><meta charset="utf-8">
             <meta name="viewport" content="width=320px">
@@ -87,6 +87,7 @@ if ($m == 'mv') { // 분류하기
         </body>
         </html>
     
-    EOS;
+EOS;
+
 }
 
