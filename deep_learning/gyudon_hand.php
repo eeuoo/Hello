@@ -39,14 +39,54 @@ if ($m == 'mv') { // 분류하기
         echo 'system error : no dir $to';
         exit;
     }
+
+    // 파일 이동 (복사한 뒤에 제거하기)
+    $path_to = '$base_dir/$to/$target';
+    copy($path, $path_to);
+    if (file_exists($path_to)) {
+        unlink($path);
+    }else {
+        echo 'Sorry, could not move.';
+        exit ;
+    }
+
+    // 선택 화면으로 리다이렉트
+    header('location : $self');
+    echo "<a href='$self'>Thank you, moved.</a>";
+
+} else {
+    // 규동 선택 입력 양식 만들기
+    $files = glob('$base_dir/$unkown_dir/*.jpg'); // 이미지 가져오기
+    if (count($files) == 0) {
+        echo '<h1>완료</h2>';
+        exit;
+    }
+    shuffle($files);  // 적당한 파일 선택
+    $target = basename($files[0]);
+    $remain = count($files);   // 남은 파일 수
+    $buttons = '' ;   // 선택지 생성
+    foreach ($dirs as $key => $dir) {
+        $fs = glob('$base_dir/$dir/*.jpg');  // 분류한 파일 수
+        $cnt = count($fs);
+        $api = '$self?m=mv&target=$target&to=$dir';
+        $buttons .="[<a href='$api'>$key($cnt)</a>]";
+    }
+
+    echo <<< EOS
+        <html>
+        <head><meta charset="utf-8">
+            <meta name="viewport" content="width=320px">
+            <style> body { text-align : center ;
+                            font-size : 24px;  }
+            </style>
+        </head>
+        <body>
+        <h3 style='font-size:12px'>선택해주세요 (남은 파일 수 : $remain)</h3>
+        <img src="./data/$unkown_dir/$target" width=300><br>
+        $buttons
+        </body>
+        </html>
+    
+    EOS;
 }
 
-// 파일 이동 (복사한 뒤에 제거하기)
-$path_to = '$base_dir/$to/$target';
-copy($path, $path_to);
-if (file_exists($path_to)) {
-    unlink($path);
-}else {
-    echo 'Sorry, could not move.';
-    exit ;
-}
