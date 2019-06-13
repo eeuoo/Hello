@@ -52,15 +52,19 @@ def make_sample(files, is_train) :
 allfiles = []
 for idx, cat in enumerate(categories) :
     image_dir = root_dir + "/" + cat
-    files = glob.glob(image_dir + '/*.PNG')
+    files = glob.glob(image_dir + '/*.PG')
 
     for f in files :
         allfiles.append( (idx, f) )
 
 # 섞은 뒤에 학습 전용 데이터와 테스트 전용 데이터 구분하기
 random.shuffle(allfiles)
-th = math.floor( len(allfiles)* 0.6 )
+th = math.floor( len(allfiles) * 0.6 )
 train = allfiles[0:th]
 test = allfiles[th:]
 X_train, y_train = make_sample(train, True)
 X_test, y_test = make_sample(test, False)
+
+xy = (X_train, X_test, y_train, y_test)
+np.save('./data/gyudon2.npy', xy)
+print('ok', len(y_train))
