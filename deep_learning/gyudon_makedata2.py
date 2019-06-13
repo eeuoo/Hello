@@ -4,7 +4,7 @@ import numpy as np
 import random, math
 
 # 분류 대상 카테고리
-root_dit = './data/'
+root_dir = './data/'
 categories = ['normal', 'beni', 'negi', 'cheese']
 nb_classes = len(categories)
 image_size = 50
@@ -39,3 +39,28 @@ def add_sample(cat, fname, is_train) :
         X.append(data)
         Y.append(cat)
 
+def make_sample(files, is_train) :
+    global X, Y
+    X = []
+    Y = []
+    for cat, fname in files :
+        add_sample(cat, fname, is_train)
+
+    return np.array(X), np.array(Y)
+
+# 각 폴더에 들어있는 파일 수집하기
+allfiles = []
+for idx, cat in enumerate(categories) :
+    image_dir = root_dir + "/" + cat
+    files = glob.glob(image_dir + '/*.PNG')
+
+    for f in files :
+        allfiles.append( (idx, f) )
+
+# 섞은 뒤에 학습 전용 데이터와 테스트 전용 데이터 구분하기
+random.shuffle(allfiles)
+th = math.floor( len(allfiles)* 0.6 )
+train = allfiles[0:th]
+test = allfiles[th:]
+X_train, y_train = make_sample(train, True)
+X_test, y_test = make_sample(test, False)
