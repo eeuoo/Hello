@@ -12,6 +12,7 @@ image_size = 50
 # 이미지 데이터 읽어 들이기
 X = []   # 이미지 데이터
 Y = []   # 레이블 데이터
+
 def add_sample(cat, fname, is_train) :
     img = Image.open(fname)
     img = img.convert('RGB')   # 색상 모드 변경
@@ -31,7 +32,7 @@ def add_sample(cat, fname, is_train) :
         X.append(data)
         Y.append(cat)
 
-        img2.save('gyudon_' + str(ang) + '.PNG')
+        img2.save('./data/gyudon_' + str(ang) + '.PNG')
 
         # 반전하기
         img2 = img2.transpose(Image.FLIP_LEFT_RIGHT)
