@@ -51,3 +51,9 @@ for i, p in enumerate(pre) :
             calories[i])
 
 # 리포트 저장하기
+html = "<html><body style='text-align : center;>" + \
+    "<style> p { margin:0; padding:0; } </style>" + \
+        html + "<body></html>"
+
+with open("gyudon_result.html", "w") as f :
+    f.write(html)
