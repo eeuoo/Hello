@@ -5,7 +5,7 @@ import sys
 image_file = './data/photo1.jpg'
 
 # 캐스케이드 파일의 경로 지정
-cascade_file = 'haarcascade_frontalface_alt.xml'
+cascade_file = './data/haarcascade_frontface.xml'
 
 # 이미지 읽어 들이기
 image = cv2.imread(image_file)
