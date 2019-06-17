@@ -12,7 +12,7 @@ output_file = re.sub( r'\,jpg|jpeg|PNG$', '_mosaic.jpg', image_file)
 mosaic_rate = 30
 
 # 캐스캐이드 파일 경로 지정하기
-cascade_file = "haarcascade_frontalface_alt.xml"
+cascade_file = './data/haarcascade_frontface.xml'
 
 # 이미지 읽어 들이기
 image = cv2.imread(image_file)
