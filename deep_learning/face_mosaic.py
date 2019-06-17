@@ -36,7 +36,7 @@ for (x, y, w, h) in face_list :
     face_img = image[y : y+h, x : x+w]
 
     # 자른 이미지를 지정한 배율로 확대/축소
-    face_img = cv2.resize(face_img, (w/mosaic_rate, h/mosaic_rate))
+    face_img = cv2.resize(face_img, (w//mosaic_rate, h//mosaic_rate))
 
     # 확대/축소한 그림을 원래 크기로 돌리기
     face_img = cv2.resize(face_img, (w, h),
