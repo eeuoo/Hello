@@ -36,3 +36,26 @@ for i, cnt in enumerate(contours) :
 
 rects = sorted(rects, key = lambda x : x[0])   # 정렬하기
 
+# 해당 영역의 이미지 데이터 추출하기
+X = []
+for i, r in enumerate(rects) :
+    index, x, y, w, h = r
+    num = gray[y:y+h, x:x+w]  # 부분 이미지 추출하기
+    num = 255 - num   # 반전하기
+
+    # 정사각형 내부에 그림 옮기기
+    ww = round( (w if w > h else h) * 1.85)
+    spc = np.zeros( (ww, ww) )
+    wy = (ww-h) // 2
+    wx = (ww-w) // 2
+
+    spc[wy:wy+h, wx:wx+w] = num
+    num = cv2.resize(spc, (28, 28))  # MNIST 크기 맞추기
+    # cv2.imwrite( str(i)+"-num.PNG", num)  # 자른 문자 저장하기
+
+    # 데이터 정규화
+    num = num.reshape(28*28)
+    num = num.astype('float32') / 255
+    X.append(num)
+    
+
