@@ -57,5 +57,24 @@ for i, r in enumerate(rects) :
     num = num.reshape(28*28)
     num = num.astype('float32') / 255
     X.append(num)
-    
 
+
+# 예측하기
+s = '31415926535897932384' + \
+    '62643383279502884197' + \
+    '16939937510582097494' + \
+    '45923078164062862089' + \
+    '98628034825342117067' 
+
+answer = list(s)
+ok = 0
+nlist = mnist.predict(np.array(X))
+
+for i, n in enumerate(nlist) :
+    ans = n.argmax()
+    if ans == int(answer[i]) :
+        ok += 1
+    else :
+        print('[ng]', i, '번째', ans, '!=', answer[i], np.int32(n*100))
+
+print('정답률', ok / len(nlist))
