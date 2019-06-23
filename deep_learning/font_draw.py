@@ -25,4 +25,36 @@ def draw_text(im, font, text) :
 # 샘플 이미지를 출력할 폴더
 if not os.path.exists('./image/num') :
     os.makedires('./image/num')
-    
+
+# 회전하거나 확대해서 데이터 늘리기
+def gen_image(base_im, no, font_name) :
+    for ang in range(-20, 20, 2) :
+        sub_im = base_im.rotate(ang)
+        data = np.asarray(sub_im)
+        X.append(data)
+        Y.append(no)
+        w = image_size
+
+        # 조금씩 확대하기
+        for r in range(8, 15, 3) :
+            size = round( (r/10) * image_size )
+            im2 = cv2.resize( data, (size, size), cv2.INTER_AREA )
+            data2 = np.asarray(im2)
+
+            if image_size > size :
+                x = (image_size - size) // 2
+                data = np.zeros( (image_size, image_size) )
+                data[x : x+size, x : x+size] = data2
+            
+            else :
+                x = (size - image_size) // 2
+                data = data2[x : x+w, x : x+w]
+            
+            X.append(data)
+            Y.append(no)
+
+            if random.randint(0, 400) == 0 :
+                fname = "image/num/n-{0}-{1}-{2}.PNG".format( font_name, no, ang, r )
+                cv2.imwrite(fname, data)
+
+
