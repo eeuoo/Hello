@@ -73,4 +73,38 @@ for path in ttf_list :
         im = Image.new('L', (200, 200))
         draw_text(im, fo, str(no))
 
-        
+# 폰트 렌더링 범위 추출하기
+ima = np.asarray(im)
+blur = cv2.GaussianBlur(ima, (5, 5), 0)   # 블러
+th = cv2.adaptiveThreshold(blur, 255, 1, 1, 11, 2)   # 2진 변환
+contours = cv2.findContours(th,
+    cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[1]
+
+for cnt in contours :
+    x, y, w, h = cv2.boundingRect(cnt)
+    if w < 10 or h < 10 :
+        continue
+    
+    num = ima[y:y+h, x:x+w]  # 부분 이미지 추출
+    ww  = w if w > h else h
+    wx = (ww - w) // 2
+    wy = (ww - h) // 2
+
+    spc = np.zeros((ww, ww))
+    spc[wy : wy+h, wx : wx+w] = num   # 중앙에 복사하기
+    num = cv2.resize(spc, (image_size, image_size), cv2.INTER_AREA) 
+
+    # 표준 상태를 데이터체 추가하기
+    X.append(num)
+    Y.append(no)
+
+    # 조금씩 회전하기
+    base_im = Image.fromarray(np.uint8(num))
+    gen_image(base_im, no, font_name)
+
+X = np.array(X)
+Y = np.array(Y)
+
+np.savez('./data/font_draw.npz', x=X, y=Y)
+print("ok", len(Y))
+
