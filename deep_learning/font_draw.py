@@ -57,4 +57,20 @@ def gen_image(base_im, no, font_name) :
                 fname = "image/num/n-{0}-{1}-{2}.PNG".format( font_name, no, ang, r )
                 cv2.imwrite(fname, data)
 
+# 이미지 렌더링
+X = []
+Y = []
 
+for path in ttf_list :
+    font_name = os.path.basename(path)
+
+    try :
+        fo = ImageFont.truetype(path, size=100)
+    except :
+        continue
+
+    for no in range(10) :
+        im = Image.new('L', (200, 200))
+        draw_text(im, fo, str(no))
+
+        
